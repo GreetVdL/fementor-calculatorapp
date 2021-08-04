@@ -3,6 +3,7 @@
 .env*
 .parcel-cache
 dist/
+calculatorapp-fementor.code-workspace
 
 # dependencies
 /node_modules

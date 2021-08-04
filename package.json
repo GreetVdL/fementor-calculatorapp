@@ -1,5 +1,5 @@
 {
-  "name": "bundlers",
+  "name": "fementor-calculatorapp",
   "scripts": {
     "start": "parcel serve ./src/index.html --open",
     "build": "npm run clean && parcel build ./src/index.html --dist-dir ./out --no-source-maps",
