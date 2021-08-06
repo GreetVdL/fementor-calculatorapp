@@ -119,7 +119,8 @@ body {
       font-size: 3.2rem;
       line-height: 60px;
       text-align: center;
-      border-bottom: 4px solid #b6a49a;
+      cursor: pointer;
+      border-bottom: 4px solid #b2a295;
     }
     #del,
     #reset {
@@ -165,5 +166,3 @@ body {
     }
   }
 }
-
-// CALCULATOR MOBILE: heading with theme slider
