@@ -4,19 +4,68 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <!-- <link href="" rel="shortcut icon" type="image/x-icon" /> -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <title>Frontend Mentor | Calculator app</title>
+  
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <!-- <style>
+      .attribution { font-size: 11px; text-align: center; }
+      .attribution a { color: hsl(228, 45%, 44%); }
+    </style> -->
+  </head>
   </head>
   <body>
-    <include src="./symbol-defs.svg"></include>
-    <include src="./header.html"></include>
-    <h1>
-      Home<svg class="icon icon-shrink2">
-        <use href="#icon-shrink2" />
-      </svg>
-    </h1>
-    <div class="test"></div>
-    <include src="./footer.html"></include>
-    <script src="./js/index.js"></script>
+    <!-- CALCULATOR -->
+    <div id="calculator">
+      <!-- HEADING WITH THEME SLIDER -->
+      <nav>
+        <header>calc</header>
+        <aside>
+          <p>theme</p>
+          <div id="theme-grid">
+            <div id="theme-numbers">
+              <div>1</div>
+              <div>2</div>
+              <div>3</div>
+            </div>
+            <div id="theme-bullets">
+              <div>
+                <div id="bullet"></div>
+              </div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </aside>
+      </nav>
+      <!-- DISPLAY FIELD -->
+      <section>0</section>
+      <!-- BUTTONS -->
+      <main>
+        <div class="button" id="seven">7</div>
+        <div class="button" id="eight">8</div>
+        <div class="button" id="nine">9</div>
+        <div class="button" id="del">DEL</div>
+        <div class="button" id="four">4</div>
+        <div class="button" id= "five">5</div>
+        <div class="button" id="six">6</div>
+        <div class="button" id="plus">+</div>
+        <div class="button" id="one">1</div>
+        <div class="button" id="two">2</div>
+        <div class="button" id="three">3</div>
+        <div class="button" id="minus">-</div>
+        <div class="button" id="poimt">.</div>
+        <div class="button" id="zero">0</div>
+        <div class="button" id="division">/</div>
+        <div class="button" id="multiply">x</div>
+        <div class="button" id="reset">RESET</div>
+        <div class="button" id="equals">=</div>
+      </main>
+    </div>
+    <!-- <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">Your Name Here</a>.
+    </div> -->
+    <script type="module" src="./js/index.js"></script>
   </body>
 </html>

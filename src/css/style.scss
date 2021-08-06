@@ -4,16 +4,141 @@
 @use "./base/fonts";
 @use "../icons/style.css";
 
+// BASE STYLES
+
 html {
   font-size: 62.5%;
+  font-family: "Spartan", sans-serif;
 }
 
-$oranje: orange;
 body {
-  margin: 10px;
+  background-color: $background;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  #calculator {
+    width: 539px;
+  }
 }
-h1 {
-  color: $oranje;
-  font-size: 30px;
-  margin: 50px 0;
+
+// CALCULATOR DESKTOP: heading with theme slider
+// TODO: calc en theme uitlijnen
+
+#calculator {
+  nav {
+    display: flex;
+    justify-content: space-between;
+    color: $text1;
+    header {
+      font-size: 3rem;
+      line-height: 3rem;
+      padding-top: 12px;
+    }
+    aside {
+      display: flex;
+      p {
+        text-transform: uppercase;
+        font-size: 1.3rem;
+        padding-top: 25px;
+        padding-right: 24px;
+      }
+      #theme-grid {
+        width: 73px;
+        #theme-numbers {
+          display: flex;
+          justify-content: space-evenly;
+          font-size: 1.2rem;
+          padding: 0 3px;
+          div {
+            width: 33.33%;
+            text-align: center;
+          }
+        }
+        #theme-bullets {
+          background-color: $textfield1;
+          height: 25px;
+          border-radius: 16px;
+          margin-top: 5px;
+          display: flex;
+          justify-content: space-evenly;
+          padding: 0 3px;
+          div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 33.33%;
+            cursor: pointer;
+            #bullet {
+              width: 15px;
+              height: 15px;
+              border-radius: 50%;
+              background-color: $red;
+            }
+          }
+        }
+      }
+    }
+  }
 }
+
+// CALCULATOR DESKTOP: display field
+
+#calculator {
+  section {
+    height: 128px;
+    background-color: $textfield1;
+    border-radius: 10px;
+    margin-top: 32px;
+    color: $text1;
+    font-size: 4.8rem;
+    line-height: 128px;
+    text-align: right;
+    padding-right: 38px;
+  }
+}
+
+// CALCULATOR DESKTOP: buttons
+
+#calculator {
+  main {
+    height: 480px;
+    background-color: #252d44;
+    border-radius: 10px;
+    margin-top: 23px;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    gap: 25px;
+    .button {
+      background-color: $buttons1;
+      border-radius: 10px;
+      height: 60px;
+      color: #252d44;
+      font-size: 3.2rem;
+      line-height: 60px;
+      text-align: center;
+      border-bottom: 4px solid #b6a49a;
+    }
+    #del,
+    #reset {
+      background-color: $lightpurple1;
+      border-color: $purpleborder1;
+      color: $text1;
+      font-size: 2rem;
+    }
+    #reset {
+      grid-column: 1 / 3;
+    }
+    #equals {
+      color: $text1;
+      background-color: $red;
+      border-color: $darkred;
+      grid-column: 3 / 5;
+    }
+  }
+}
+
+// CALCULATOR RESPONSIVE
+// TODO: responsive maken

@@ -1,7 +1,7 @@
 //@use './variables'; => kan geen kwaad want use gaat niet dubbel importen
 
 // imports van google fonts =>
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
 // heel belangrijk => alles via https
 // import van icon-font => fontello
 // @import url("../fonts/icon/icon.css");
@@ -9,3 +9,7 @@
 // @import url("../fonts/fordantenna/stylesheet.css");
 // typekit => met JS
 // websafe => fonts dat
+
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
+
+// font-family: 'Spartan', sans-serif;
