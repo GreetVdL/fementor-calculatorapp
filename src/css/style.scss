@@ -14,6 +14,7 @@ html {
 body {
   background-color: $background;
   min-height: 100vh;
+  padding: 20px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +24,6 @@ body {
 }
 
 // CALCULATOR DESKTOP: heading with theme slider
-// TODO: calc en theme uitlijnen
 
 #calculator {
   nav {
@@ -140,5 +140,30 @@ body {
   }
 }
 
-// CALCULATOR RESPONSIVE
-// TODO: responsive maken
+// CALCULATOR MOBILE
+
+@media screen and (max-width: 576px) {
+  body {
+    #calculator {
+      width: 300px;
+      section {
+        height: 87px;
+        line-height: 87px;
+        padding-right: 26px;
+        font-size: 3rem;
+      }
+      main {
+        height: auto;
+        padding: 15px;
+        gap: 14px;
+        .button {
+          height: 55px;
+          font-size: 2.8rem;
+          line-height: 55px;
+        }
+      }
+    }
+  }
+}
+
+// CALCULATOR MOBILE: heading with theme slider
