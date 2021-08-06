@@ -74,6 +74,7 @@ body {
               height: 15px;
               border-radius: 50%;
               background-color: $red;
+              transition: all 300ms;
             }
           }
         }
@@ -162,6 +163,194 @@ body {
           font-size: 2.8rem;
           line-height: 55px;
         }
+      }
+    }
+  }
+}
+
+// CALCULATOR THEME 2
+
+body.theme2 {
+  background-color: #e6e6e6;
+}
+
+// CALCULATOR THEME 2: heading with theme slider
+
+body.theme2 {
+  #calculator {
+    nav {
+      color: #39392f;
+      aside {
+        #theme-grid {
+          #theme-bullets {
+            background-color: #d3cdcd;
+            div {
+              #bullet {
+                background-color: #c85401;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// CALCULATOR THEME 2: display field
+
+body.theme2 {
+  #calculator {
+    section {
+      background-color: white;
+      color: #39392f;
+    }
+  }
+}
+
+// CALCULATOR THEME 2: buttons
+
+body.theme2 {
+  #calculator {
+    main {
+      background-color: #d3cdcd;
+      .button {
+        background-color: #e5e4e0;
+        border-bottom: 4px solid #a79d91;
+      }
+      #del,
+      #reset {
+        background-color: #388187;
+        border-color: #2c5d64;
+      }
+      #equals {
+        background-color: #c85401;
+        border-color: #873600;
+      }
+    }
+  }
+}
+
+// CALCULATOR THEME 2
+
+body.theme2 {
+  background-color: #e6e6e6;
+}
+
+// CALCULATOR THEME 2: heading with theme slider
+
+body.theme2 {
+  #calculator {
+    nav {
+      color: #39392f;
+      aside {
+        #theme-grid {
+          #theme-bullets {
+            background-color: #d3cdcd;
+            div {
+              #bullet {
+                background-color: #c85401;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// CALCULATOR THEME 2: display field
+
+body.theme2 {
+  #calculator {
+    section {
+      background-color: white;
+      color: #39392f;
+    }
+  }
+}
+
+// CALCULATOR THEME 2: buttons
+
+body.theme2 {
+  #calculator {
+    main {
+      background-color: #d3cdcd;
+      .button {
+        background-color: #e5e4e0;
+        border-bottom: 4px solid #a79d91;
+      }
+      #del,
+      #reset {
+        background-color: #388187;
+        border-color: #2c5d64;
+      }
+      #equals {
+        background-color: #c85401;
+        border-color: #873600;
+      }
+    }
+  }
+}
+
+// CALCULATOR THEME 3
+
+body.theme3 {
+  background-color: #17062a;
+}
+
+// CALCULATOR THEME 3: heading with theme slider
+
+body.theme3 {
+  #calculator {
+    nav {
+      color: #ffe538;
+      aside {
+        #theme-grid {
+          #theme-bullets {
+            background-color: #1e0836;
+            div {
+              #bullet {
+                background-color: #00dacd;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// CALCULATOR THEME 3: display field
+
+body.theme3 {
+  #calculator {
+    section {
+      background-color: #1e0836;
+      color: #ffe538;
+    }
+  }
+}
+
+// CALCULATOR THEME 3: buttons
+
+body.theme3 {
+  #calculator {
+    main {
+      background-color: #1e0836;
+
+      .button {
+        background-color: #331b4d;
+        border-bottom: 4px solid #77248c;
+        color: #ffe538;
+      }
+      #del,
+      #reset {
+        background-color: #56077c;
+        border-color: #bf16f5;
+      }
+      #equals {
+        background-color: #00decf;
+        border-color: #6ef7ef;
       }
     }
   }
