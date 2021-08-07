@@ -72,14 +72,6 @@ operands.forEach((operand) => {
   operand.addEventListener("click", function () {
     equalsPressed = false;
     const actualOperand = this.textContent;
-    // if (!index) {
-    //   toBeShown = "ERROR";
-    //   updateDisplay();
-    //   operations.length = 0;
-    //   index = 0;
-    //   console.log(operations);
-    //   return;
-    // }
     if (!operations[index]) {
       operations[index] = actualOperand;
       index++;
@@ -182,6 +174,7 @@ function calculateAndDisplayResult() {
     operations.length = 0;
     index = 0;
     console.log(operations);
+    return;
   }
 
   // show result
