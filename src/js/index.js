@@ -32,7 +32,13 @@ thirdSquare.addEventListener("click", function () {
 const displayField = document.querySelector("section span");
 let toBeShown = "";
 
+const operations = [];
+let index = 0;
+
 function updateDisplay() {
+  if (operations.length === 0) {
+    toBeShown = "0";
+  }
   displayField.textContent = toBeShown;
 }
 
@@ -40,7 +46,13 @@ const values = document.querySelectorAll(".value");
 values.forEach((value) => {
   value.addEventListener("click", function () {
     const actualValue = this.textContent;
-    toBeShown += actualValue;
+    if (!operations[index]) {
+      operations[index] = actualValue;
+    } else {
+      operations[index] += actualValue;
+    }
+    console.log(operations);
+    toBeShown = operations.join("");
     updateDisplay();
   });
 });
@@ -49,30 +61,29 @@ const operands = document.querySelectorAll(".operand");
 operands.forEach((operand) => {
   operand.addEventListener("click", function () {
     const actualOperand = this.textContent;
-    toBeShown += actualOperand;
+    index++;
+    operations[index] = actualOperand;
+    index++;
+    console.log(operations);
+    toBeShown = operations.join("");
     updateDisplay();
   });
 });
 
-const comma = document.querySelector("#point");
-comma.addEventListener("click", function () {
-  toBeShown += ",";
-  updateDisplay();
-});
-
 const del = document.querySelector("#del");
 del.addEventListener("click", function () {
-  toBeShown = toBeShown.slice(0, toBeShown.length - 1);
-  if (toBeShown.length === 0) {
-    toBeShown = "0";
+  if (index) {
+    index--;
   }
+  operations.pop();
   updateDisplay();
+  console.log(operations);
 });
 
 const reset = document.querySelector("#reset");
 reset.addEventListener("click", function () {
-  toBeShown = "0";
+  operations.length = 0;
+  index = 0;
   updateDisplay();
+  console.log(operations);
 });
-
-// calculating functionality
