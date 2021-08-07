@@ -15,7 +15,6 @@ calculatorapp-fementor.code-workspace
 
 # next.js
 /.next/
-/out/
 
 # production
 /build
