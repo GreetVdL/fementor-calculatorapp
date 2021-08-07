@@ -96,6 +96,13 @@ body {
     line-height: 128px;
     text-align: right;
     padding-right: 38px;
+    overflow: hidden;
+    position: relative;
+    span {
+      position: absolute;
+      display: block;
+      right: 38px;
+    }
   }
 }
 
