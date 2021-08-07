@@ -76,6 +76,7 @@ del.addEventListener("click", function () {
     index--;
   }
   operations.pop();
+  toBeShown = operations.join("");
   updateDisplay();
   console.log(operations);
 });
