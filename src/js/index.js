@@ -72,6 +72,14 @@ operands.forEach((operand) => {
   operand.addEventListener("click", function () {
     equalsPressed = false;
     const actualOperand = this.textContent;
+    // if (!index) {
+    //   toBeShown = "ERROR";
+    //   updateDisplay();
+    //   operations.length = 0;
+    //   index = 0;
+    //   console.log(operations);
+    //   return;
+    // }
     if (!operations[index]) {
       operations[index] = actualOperand;
       index++;
@@ -117,19 +125,30 @@ function calculateAndDisplayResult() {
   if (
     operations[0] === "-" ||
     operations[0] === "+" ||
-    operations[0] === "*" ||
+    operations[0] === "x" ||
     operations[0] === "/"
   ) {
     toBeShown = "ERROR";
     updateDisplay();
+    operations.length = 0;
+    index = 0;
     return;
   }
 
   let index2;
   // transform division operations into multiply operations
   while ((index2 = operations.indexOf("/")) != -1) {
-    operations[index2] = "x";
-    operations[index2 + 1] = divide(1, operations[index2 + 1]);
+    if (parseFloat(operations[index2 + 1]) === 0) {
+      toBeShown = "ERROR";
+      updateDisplay();
+      operations.length = 0;
+      index = 0;
+      console.log(operations);
+      return;
+    } else {
+      operations[index2] = "x";
+      operations[index2 + 1] = divide(1, operations[index2 + 1]);
+    }
   }
   console.log(operations);
 
