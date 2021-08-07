@@ -61,9 +61,14 @@ const operands = document.querySelectorAll(".operand");
 operands.forEach((operand) => {
   operand.addEventListener("click", function () {
     const actualOperand = this.textContent;
-    index++;
-    operations[index] = actualOperand;
-    index++;
+    if (!operations[index]) {
+      operations[index] = actualOperand;
+      index++;
+    } else {
+      index++;
+      operations[index] = actualOperand;
+      index++;
+    }
     console.log(operations);
     toBeShown = operations.join("");
     updateDisplay();
@@ -88,3 +93,78 @@ reset.addEventListener("click", function () {
   updateDisplay();
   console.log(operations);
 });
+
+const equals = document.querySelector("#equals");
+equals.addEventListener("click", function () {
+  calculateAndDisplayResult();
+});
+
+function calculateAndDisplayResult() {
+  if (
+    operations[0] === "-" ||
+    operations[0] === "+" ||
+    operations[0] === "*" ||
+    operations[0] === "/"
+  ) {
+    toBeShown = "ERROR";
+    updateDisplay();
+    return;
+  }
+  // transform division operations into multiply operations
+  let indexDivOperator;
+  while ((indexDivOperator = operations.indexOf("/")) != -1) {
+    operations[indexDivOperator] = "x";
+    operations[indexDivOperator + 1] = divide(
+      1,
+      operations[indexDivOperator + 1]
+    );
+  }
+  console.log(operations);
+
+  // find and process multiply operations
+  let indexMulOperator;
+  while ((indexMulOperator = operations.indexOf("x")) != -1) {
+    let tempResult = multiply(
+      operations[indexMulOperator - 1],
+      operations[indexMulOperator + 1]
+    );
+    operations.splice(indexMulOperator, 2);
+    operations[indexMulOperator - 1] = tempResult;
+  }
+  console.log(operations);
+  // transform substraction operations into addition operations
+  let indexSubOperator;
+  while ((indexSubOperator = operations.indexOf("-")) != -1) {
+    console.log("passing through!");
+    operations[indexSubOperator] = "+";
+    operations[indexSubOperator + 1] = multiply(
+      -1,
+      operations[indexSubOperator + 1]
+    );
+  }
+  console.log(operations);
+  // find and process addition operations
+  let indexAddOperator;
+  while ((indexAddOperator = operations.indexOf("+")) != -1) {
+    let tempResult = add(
+      operations[indexAddOperator - 1],
+      operations[indexAddOperator + 1]
+    );
+    operations.splice(indexAddOperator, 2);
+    operations[indexAddOperator - 1] = tempResult;
+  }
+  console.log(operations);
+}
+
+function add(left, right) {
+  return parseFloat(left) + parseFloat(right);
+}
+function substract(left, right) {
+  return parseFloat(left) - parseFloat(right);
+}
+function multiply(left, right) {
+  return parseFloat(left) * parseFloat(right);
+}
+function divide(left, right) {
+  return parseFloat(left) / parseFloat(right);
+}
