@@ -35,6 +35,8 @@ let toBeShown = "";
 const operations = [];
 let index = 0;
 
+let equalsPressed = false;
+
 function updateDisplay() {
   if (operations.length === 0) {
     toBeShown = "0";
@@ -46,10 +48,18 @@ const values = document.querySelectorAll(".value");
 values.forEach((value) => {
   value.addEventListener("click", function () {
     const actualValue = this.textContent;
-    if (!operations[index]) {
+    console.log(equalsPressed);
+    if (equalsPressed) {
+      operations.length = 0;
+      index = 0;
       operations[index] = actualValue;
+      equalsPressed = false;
     } else {
-      operations[index] += actualValue;
+      if (!operations[index]) {
+        operations[index] = actualValue;
+      } else {
+        operations[index] += actualValue;
+      }
     }
     console.log(operations);
     toBeShown = operations.join("");
@@ -60,6 +70,7 @@ values.forEach((value) => {
 const operands = document.querySelectorAll(".operand");
 operands.forEach((operand) => {
   operand.addEventListener("click", function () {
+    equalsPressed = false;
     const actualOperand = this.textContent;
     if (!operations[index]) {
       operations[index] = actualOperand;
@@ -94,9 +105,12 @@ reset.addEventListener("click", function () {
   console.log(operations);
 });
 
+// calculation functionality
+
 const equals = document.querySelector("#equals");
 equals.addEventListener("click", function () {
   calculateAndDisplayResult();
+  equalsPressed = true;
 });
 
 function calculateAndDisplayResult() {
@@ -110,49 +124,52 @@ function calculateAndDisplayResult() {
     updateDisplay();
     return;
   }
+
+  let index2;
   // transform division operations into multiply operations
-  let indexDivOperator;
-  while ((indexDivOperator = operations.indexOf("/")) != -1) {
-    operations[indexDivOperator] = "x";
-    operations[indexDivOperator + 1] = divide(
-      1,
-      operations[indexDivOperator + 1]
-    );
+  while ((index2 = operations.indexOf("/")) != -1) {
+    operations[index2] = "x";
+    operations[index2 + 1] = divide(1, operations[index2 + 1]);
   }
   console.log(operations);
 
   // find and process multiply operations
-  let indexMulOperator;
-  while ((indexMulOperator = operations.indexOf("x")) != -1) {
-    let tempResult = multiply(
-      operations[indexMulOperator - 1],
-      operations[indexMulOperator + 1]
-    );
-    operations.splice(indexMulOperator, 2);
-    operations[indexMulOperator - 1] = tempResult;
+  while ((index2 = operations.indexOf("x")) != -1) {
+    let tempResult = multiply(operations[index2 - 1], operations[index2 + 1]);
+    operations.splice(index2, 2);
+    operations[index2 - 1] = tempResult;
   }
   console.log(operations);
+
   // transform substraction operations into addition operations
-  let indexSubOperator;
-  while ((indexSubOperator = operations.indexOf("-")) != -1) {
-    console.log("passing through!");
-    operations[indexSubOperator] = "+";
-    operations[indexSubOperator + 1] = multiply(
-      -1,
-      operations[indexSubOperator + 1]
-    );
+  while ((index2 = operations.indexOf("-")) != -1) {
+    operations[index2] = "+";
+    operations[index2 + 1] = multiply(-1, operations[index2 + 1]);
   }
   console.log(operations);
+
   // find and process addition operations
-  let indexAddOperator;
-  while ((indexAddOperator = operations.indexOf("+")) != -1) {
-    let tempResult = add(
-      operations[indexAddOperator - 1],
-      operations[indexAddOperator + 1]
-    );
-    operations.splice(indexAddOperator, 2);
-    operations[indexAddOperator - 1] = tempResult;
+  while ((index2 = operations.indexOf("+")) != -1) {
+    let tempResult = add(operations[index2 - 1], operations[index2 + 1]);
+    operations.splice(index2, 2);
+    operations[index2 - 1] = tempResult;
   }
+  console.log(operations);
+
+  // show error when given wrong input
+  if (operations.includes(NaN)) {
+    toBeShown = "ERROR";
+    updateDisplay();
+    operations.length = 0;
+    index = 0;
+    console.log(operations);
+  }
+
+  // show result
+  toBeShown = Math.round(operations[0] * 10000) / 10000;
+  updateDisplay();
+  operations.splice(1);
+  index = 0;
   console.log(operations);
 }
 
