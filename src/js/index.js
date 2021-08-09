@@ -76,7 +76,7 @@ values.forEach((value) => {
     }
     console.log(operations);
     // display the concatenated string of the items of the operations array
-    if (resultBeenCalculated) {
+    if (resultBeenCalculated && !isNaN(operations[0])) {
       toBeShown = operations
         .map((item) => {
           if (operations.indexOf(item) === 0) {
@@ -115,7 +115,7 @@ operands.forEach((operand) => {
     }
     console.log(operations);
     // display the concatenated string of the items of the operations array
-    if (resultBeenCalculated) {
+    if (resultBeenCalculated && !isNaN(operations[0])) {
       toBeShown = operations
         .map((item) => {
           if (operations.indexOf(item) === 0) {
@@ -142,7 +142,7 @@ del.addEventListener("click", function () {
   // ... because the last item of the array will be removed
   operations.pop();
   // display the concatenated string of the items of the operations array
-  if (resultBeenCalculated) {
+  if (resultBeenCalculated && !isNaN(operations[0])) {
     toBeShown = operations
       .map((item) => {
         if (operations.indexOf(item) === 0) {
