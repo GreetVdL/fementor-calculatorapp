@@ -70,7 +70,7 @@ values.forEach((value) => {
       if (!operations[index]) {
         operations[index] = actualValue;
       } else {
-        // otherwise, append the input value to the already existing sting item of the operations array
+        // otherwise, append the input value to the already existing string item of the operations array
         operations[index] += actualValue;
       }
     }
@@ -135,12 +135,15 @@ operands.forEach((operand) => {
 // event listener for the delete button
 const del = document.querySelector("#del");
 del.addEventListener("click", function () {
-  // if there is more than one item in the operations array, let the index move one down...
-  if (index) {
+  // delete the last item of the array
+  console.log(index);
+  operations.pop();
+  // if the last remaining item of the array is a number, the index should move down to that item so that additional digits can be appended there
+  if (!isNaN(operations[operations.length - 1])) {
+    index--;
     index--;
   }
-  // ... because the last item of the array will be removed
-  operations.pop();
+  console.log(index);
   // display the concatenated string of the items of the operations array
   if (resultBeenCalculated && !isNaN(operations[0])) {
     toBeShown = operations
